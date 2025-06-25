@@ -117,7 +117,7 @@
 
     // CSDK postMessage listener
     window.addEventListener('message', function(event) {
-      if (event.data && event.data.type === 'csdk') {
+      if (event.data && event.data.type === 'store_catalog') {
         const logArea = document.getElementById('csdk-log');
         logArea.textContent = 'csdk message received: ' + JSON.stringify(event.data);
       }
