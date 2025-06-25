@@ -18,6 +18,7 @@
   <div class="container">
     <h1>Catalog Offers</h1>
     <div id="content"></div>
+    <div id="csdk-log" style="margin-top:30px; padding:15px; background:#f0f0f0; border-radius:6px; min-height:40px; color:#333; font-size:0.95em;"></div>
   </div>
   <script>
     // Hardcoded fallback data (from sample catalog.js)
@@ -90,6 +91,7 @@
             ${offer.commitmentVariants.map(variant => `
               <li>
                 <strong>${variant.term}</strong>: ${catalog.currency.symbol}${variant.offerPriceDisplay.displayUnitPrice}
+                <button onclick="window.open('https://oobe.adobe.com/buy_store_product?productId=${variant.productId}', '_blank')">Buy</button>
               </li>
             `).join('')}
           </ul>
@@ -108,6 +110,14 @@
         }
       } else {
         document.getElementById('content').innerHTML = '<div class="msg">No catalog data found.</div>';
+      }
+    });
+
+    // CSDK postMessage listener
+    window.addEventListener('message', function(event) {
+      if (event.data && event.data.type === 'csdk') {
+        const logArea = document.getElementById('csdk-log');
+        logArea.textContent = 'csdk message received: ' + JSON.stringify(event.data);
       }
     });
   </script>
