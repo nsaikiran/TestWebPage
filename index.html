@@ -91,7 +91,7 @@
             ${offer.commitmentVariants.map(variant => `
               <li>
                 <strong>${variant.term}</strong>: ${catalog.currency.symbol}${variant.offerPriceDisplay.displayUnitPrice}
-                <button onclick="window.open('https://oobe.adobe.com/buy_store_product?productId=${variant.productId}', '_blank')">Buy</button>
+                <a href="https://oobe.adobe.com/buy_store_product?productId=${variant.productId}"><button>Buy</button></a>
               </li>
             `).join('')}
           </ul>
