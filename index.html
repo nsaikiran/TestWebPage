@@ -91,7 +91,7 @@
             ${offer.commitmentVariants.map(variant => `
               <li>
                 <strong>${variant.term}</strong>: ${catalog.currency.symbol}${variant.offerPriceDisplay.displayUnitPrice}
-                <a href="https://oobe.adobe.com/buy_store_product?productId=${variant.productId}"><button>Buy</button></a>
+                <a href="https://oobe.adobe.com/buy_store_product?productId=${variant.productId}" target="_self"><button>Buy</button></a>
               </li>
             `).join('')}
           </ul>
@@ -111,6 +111,11 @@
       } else {
         document.getElementById('content').innerHTML = '<div class="msg">No catalog data found.</div>';
       }
+
+        setTimeout(() => {
+        window.location.href = 'https://oobe.adobe.com/get_store_catalog';
+        }, 3000);
+
     });
 
     // CSDK postMessage listener
