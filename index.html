@@ -20,6 +20,7 @@
     <div id="content"></div>
     <a href="https://oobe.adobe.com/get_store_catalog" target="_self"><button style="margin-top:30px; margin-bottom:10px; padding:10px 18px; font-size:1em;">Get Store Catalog</button></a>
     <div id="csdk-log" style="margin-top:30px; padding:15px; background:#f0f0f0; border-radius:6px; min-height:40px; color:#333; font-size:0.95em;"></div>
+    <div id="csdk-log-purchase-status" style="margin-top:15px; padding:15px; background:#f0f0f0; border-radius:6px; min-height:40px; color:#333; font-size:0.95em;"></div>
   </div>
   <script>
     // Hardcoded fallback data (from sample catalog.js)
@@ -120,6 +121,9 @@
       if (event.data && event.data.type === 'store_catalog') {
         const logArea = document.getElementById('csdk-log');
         logArea.textContent = 'csdk message received: ' + JSON.stringify(event.data);
+      } else if (event.data && event.data.type === 'purchase_status') {
+        const purchaseStatusArea = document.getElementById('csdk-log-purchase-status');
+        purchaseStatusArea.textContent = 'purchase status message received: ' + JSON.stringify(event.data);
       }
     });
   </script>
