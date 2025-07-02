@@ -118,10 +118,10 @@
 
     // CSDK postMessage listener
     window.addEventListener('message', function(event) {
-      if (event.data && event.data.type === 'store_catalog') {
+      if (event.data && event.data.type === 'CSDK' && event.data.subType === 'updateCatalog') {
         const logArea = document.getElementById('csdk-log');
         logArea.textContent = 'csdk message received: ' + JSON.stringify(event.data);
-      } else if (event.data && event.data.type === 'purchase_status') {
+      } else if (event.data && event.data.type === 'CSDK' && event.data.subType === 'iapStatus') {
         const purchaseStatusArea = document.getElementById('csdk-log-purchase-status');
         purchaseStatusArea.textContent = 'purchase status message received: ' + JSON.stringify(event.data);
       }
